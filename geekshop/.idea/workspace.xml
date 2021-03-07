@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="754b0485-07d5-482f-9828-e108ad299d59" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="package.json" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1oz1vsA0SQDHOyFhUSriaa8MpxV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="sqlite" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Lessons\django_projects\geekshop" />
+      <recent name="D:\Lessons\django_projects\geekshop\mainapp\templates\mainapp" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Lessons\django_projects\geekshop" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="geekshop" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="D:\Lessons\django_projects\geekshop\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/venv" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/venv/Scripts" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Python.AppEngineServer" factoryName="App Engine server">
+      <module name="geekshop" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="D:\Lessons\9_Django\#1\step_2\geekshop\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="host" value="127.0.0.1" />
+      <option name="browserUrl" value="http://127.0.0.1:8080/" />
+      <option name="additionalOptions" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="geekshop" type="Python.DjangoServer" factoryName="Django server">
+      <module name="geekshop" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="geekshop.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="754b0485-07d5-482f-9828-e108ad299d59" name="Default Changelist" comment="" />
+      <created>1614274839134</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1614274839134</updated>
+      <workItem from="1614275675298" duration="98000" />
+      <workItem from="1614275818551" duration="31000" />
+      <workItem from="1614275966832" duration="3481000" />
+      <workItem from="1614281486975" duration="150000" />
+      <workItem from="1614281746736" duration="16000" />
+      <workItem from="1614320425569" duration="2589000" />
+      <workItem from="1614323782905" duration="71000" />
+      <workItem from="1614325730443" duration="3319000" />
+      <workItem from="1614349035416" duration="4510000" />
+      <workItem from="1614353961903" duration="57000" />
+      <workItem from="1614607345327" duration="1212000" />
+      <workItem from="1614617874925" duration="6608000" />
+      <workItem from="1614663594530" duration="10045000" />
+      <workItem from="1614762026118" duration="4032000" />
+      <workItem from="1615101208552" duration="507000" />
+      <workItem from="1615104394621" duration="14194000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="282" y="162" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1615109307464">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="551" y="162" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1614323739851" />
+    <state x="282" y="162" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1615109307464" />
+    <state x="2108" y="153" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040/1920.0.1280.984@1920.0.1280.984" timestamp="1614618241171" />
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.61.1280.984/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614278519108" />
+    <state x="712" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1614700585088">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="712" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1614700585088" />
+    <state x="740" y="260" key="FileChooserDialogImpl" timestamp="1615109298324">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="260" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1614323705830" />
+    <state x="740" y="260" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1615109298324" />
+    <state x="740" y="260" key="FileChooserDialogImpl/1920.61.1280.984/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1614281602973" />
+    <state x="740" y="260" key="FileChooserDialogImpl/1920.61.1280.984/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614278462156" />
+    <state width="1877" height="262" key="GridCell.Tab.0.bottom" timestamp="1615118606945">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1614331600759" />
+    <state width="1877" height="262" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1615118606945" />
+    <state width="1237" height="262" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040/1920.0.1280.984@1920.0.1280.984" timestamp="1614624316236" />
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614354017747" />
+    <state width="1877" height="262" key="GridCell.Tab.0.center" timestamp="1615118606945">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1614331600759" />
+    <state width="1877" height="262" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1615118606945" />
+    <state width="1237" height="262" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040/1920.0.1280.984@1920.0.1280.984" timestamp="1614624316236" />
+    <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614354017747" />
+    <state width="1877" height="262" key="GridCell.Tab.0.left" timestamp="1615118606945">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1614331600759" />
+    <state width="1877" height="262" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1615118606945" />
+    <state width="1237" height="262" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040/1920.0.1280.984@1920.0.1280.984" timestamp="1614624316236" />
+    <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614354017746" />
+    <state width="1877" height="262" key="GridCell.Tab.0.right" timestamp="1615118606945">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1614331600759" />
+    <state width="1877" height="262" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1615118606945" />
+    <state width="1237" height="262" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040/1920.0.1280.984@1920.0.1280.984" timestamp="1614624316236" />
+    <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614354017747" />
+    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1614764045886">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1920.1040/-1920.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1614764045886" />
+    <state x="451" y="250" key="SettingsEditor" timestamp="1614323642657">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="451" y="250" key="SettingsEditor/0.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1614323642657" />
+    <state x="461" y="164" key="SettingsEditor/1920.61.1280.984/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1614278768237" />
+    <state x="667" y="255" width="585" height="530" key="find.popup" timestamp="1614321880079">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="667" y="255" width="585" height="530" key="find.popup/0.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1614321880079" />
+    <state x="2223" y="211" width="672" height="678" key="search.everywhere.popup" timestamp="1614623134281">
+      <screen x="1920" y="0" width="1280" height="984" />
+    </state>
+    <state x="2223" y="211" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040/1920.0.1280.984@1920.0.1280.984" timestamp="1614623134281" />
+  </component>
+</project>
