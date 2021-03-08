@@ -20,7 +20,7 @@ def main(request):
 def products(request, pk=None):
     title = 'продукты'
     links_menu = ProductCategory.objects.all()
-    same_products = Product.objects.all()[:4]
+    same_products = Product.objects.all()[:3]
 
     content = {
         'title': title,
