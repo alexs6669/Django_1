@@ -2,10 +2,8 @@ from django.contrib import auth
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from django.views.generic import ListView
 
 from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm
-from authapp.models import ShopUser
 
 
 def login(request):
@@ -61,5 +59,3 @@ def edit(request):
     }
 
     return render(request, 'authapp/edit.html', content)
-
-

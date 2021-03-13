@@ -25,13 +25,6 @@ class ShopUserRegisterForm(UserCreationForm):
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
 
-    def clean_email(self):
-        data = self.cleaned_data['email']
-        emails = list(ShopUser.objects.values_list('email', flat=True))
-        if data in emails:
-            raise forms.ValidationError('Такой email уже есть в базе!')
-        return data
-
     def clean_age(self):
         data = self.cleaned_data['age']
         if data < 18:
@@ -50,13 +43,6 @@ class ShopUserEditForm(UserChangeForm):
             field.widget.attrs['class'] = 'form-control'
             if field_name == 'password':
                 field.widget = forms.HiddenInput()
-
-    def clean_email(self):
-        data = self.cleaned_data['email']
-        emails = list(ShopUser.objects.values_list('email', flat=True))
-        if data in emails:
-            raise forms.ValidationError('Такой email уже есть в базе!')
-        return data
 
     def clean_age(self):
         data = self.cleaned_data['age']
