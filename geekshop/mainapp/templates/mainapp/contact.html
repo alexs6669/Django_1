@@ -2,12 +2,11 @@
 {% load static %}
 {% block content %}
     <div class="hero">
-        <div class="header clearfix">
-            <a href="{% url 'main' %}" class="logo"></a>
-            {% include 'mainapp/includes/inc_main_menu.html' %}
-            <a href="#" class="search"></a>
-            <a href="#" class="basket"></a>
-        </div>
+        {% block menu %}
+            <div class="header clearfix">
+                {% include 'mainapp/includes/inc_main_menu.html' %}
+            </div>
+        {% endblock %}
         <h1>наши контакты</h1>
     </div>
     <div class="location">

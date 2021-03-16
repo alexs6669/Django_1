@@ -3,13 +3,12 @@
     <form class="form-horizontal" action="{% url 'auth:edit' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ edit_form.as_p }}
-        <input type="submit" value="{{ 'сохранить'|title }}" class="form-control"/>
+        <div class="">
+            <img src="/media/users_avatars/avatar_kxWaCVK.jpg">
+        </div>
+        <input type="submit" value="{{ 'сохранить'|title }}" class="form-control">
     </form>
-    <br>
-        <button class="btn btn-link form-control">
+    <button class="btn btn-link form-control">
         <a href="{% url 'main' %}">{{ 'на главную'|title }}</a>
     </button>
-    <div class="">
-    <img src="/media/{{ user.avatar }}"/>
-    </div>
 {% endblock %}
