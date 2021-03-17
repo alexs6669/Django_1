@@ -15,9 +15,26 @@ html, body {
 
 .basket_total {
     position: absolute;
-    font-size: small;
 }
 
+.basket_count {
+    cursor: pointer;
+    min-width: 20px;
+    background-color: #d62240;
+    color: #fff;
+    border-radius: 30px;
+    position: absolute;
+    left: -18px;
+    top: -15px;
+    text-align: center;
+    line-height: 20px;
+    font-family: Arial, sans-serif;
+    margin: 5px 5px;
+}
+
+.basket_sum {
+    font-family: sans-serif;
+}
 .basket_container {
     margin: 25px auto;
     width: 700px;
@@ -332,7 +349,7 @@ html, body {
     background-image: url(/static/img/search.png);
     position: absolute;
     top: 63px;
-    left: 1150px;
+    left: 1160px;
 }
 
 .basket {
@@ -342,13 +359,14 @@ html, body {
     background-image: url(/static/img/basket.png);
     position: absolute;
     top: 63px;
-    left: 1180px;
+    left: 1190px;
     text-decoration: none;
     color: #555;
 }
 
 .basket span {
     margin-left: 25px;
+    white-space: nowrap;
 }
 
 .clearfix:after {

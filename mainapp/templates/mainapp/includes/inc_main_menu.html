@@ -1,20 +1,14 @@
 <a href="{% url 'main' %}" class="logo"></a>
 <ul class="menu">
     <li>
-        <a href="{% url 'main' %}" class="{% if request.resolver_match.url_name == 'main' %}active{% endif %}">
-            домой
-        </a>
+        <a href="{% url 'main' %}" class="{% if request.resolver_match.url_name == 'main' %}active{% endif %}">домой</a>
     </li>
     <li>
         <a href="{% url 'products:products' %}"
-           class="{% if request.resolver_match.namespace == 'products' %}active{% endif %}">
-            продукты
-        </a>
+           class="{% if request.resolver_match.namespace == 'products' %}active{% endif %}">продукты</a>
     </li>
     <li>
-        <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
-            контакты
-        </a>
+        <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">контакты</a>
     </li>
     {% if user.is_authenticated %}
         <li>
@@ -29,14 +23,18 @@
         </li>
     {% endif %}
 </ul>
-<a href="#" class="search"></a>
-<a href="{% url 'basket:view' %}" class="basket">
-    <span class="basket_total">
-        {% if basket %}
-            {{ basket.0.total_cost|floatformat:0 }}₽.
-            ({{ basket.0.total_quantity }}шт.)
-        {% endif %}
-    </span>
-</a>
+<ul class="side_menu">
+    <a href="#" class="search"></a>
+    <a href="{% url 'basket:view' %}" class="basket">
+        <span class="basket_total">
+            {% if basket %}
+                <sup class="basket_count">{{ basket.0.total_quantity }}</sup>
+                <span class="basket_sum">{{ basket.0.total_cost|floatformat:0 }} ₽</span>
+            {% endif %}
+        </span>
+    </a>
+</ul>
+
+
 
 
