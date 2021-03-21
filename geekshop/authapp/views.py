@@ -2,24 +2,33 @@ from django.contrib import auth
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from django.views.generic import ListView
 
 from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm
-from authapp.models import ShopUser
 
 
 def login(request):
-    login_form = ShopUserLoginForm(data=request.POST)
+    title = 'вход'
+    login_form = ShopUserLoginForm(data=request.POST or None)
+
+    next = request.GET.get('next', '')
+    # next = request.GET['next'] if 'next' in request.GET else ''
+
     if request.method == 'POST' and login_form.is_valid():
         username = request.POST['username']
         password = request.POST['password']
+
         user = auth.authenticate(username=username, password=password)
         if user and user.is_active:
             auth.login(request, user)
-            return HttpResponseRedirect(reverse('main'))
+            if 'next' in request.POST.keys():
+                return HttpResponseRedirect(request.POST['next'])
+            else:
+                return HttpResponseRedirect(reverse('main'))
+
     content = {
-        'title': 'вход',
-        'login_form': login_form
+        'title': title,
+        'login_form': login_form,
+        'next': next
     }
     return render(request, 'authapp/login.html', content)
 
@@ -30,6 +39,8 @@ def logout(request):
 
 
 def register(request):
+    title = 'регистрация'
+
     if request.method == 'POST':
         register_form = ShopUserRegisterForm(request.POST, request.FILES)
         if register_form.is_valid():
@@ -39,13 +50,15 @@ def register(request):
         register_form = ShopUserRegisterForm()
 
     content = {
-        'title': 'регистрация',
+        'title': title,
         'form': register_form
     }
     return render(request, 'authapp/register.html', content)
 
 
 def edit(request):
+    title = 'редактирование'
+
     if request.method == 'POST':
         edit_form = ShopUserEditForm(request.POST, request.FILES, instance=request.user)
         if edit_form.is_valid():
@@ -56,10 +69,8 @@ def edit(request):
         edit_form = ShopUserEditForm(instance=request.user)
 
     content = {
-        'title': 'редактирование',
+        'title': title,
         'edit_form': edit_form
     }
 
     return render(request, 'authapp/edit.html', content)
-
-

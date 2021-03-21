@@ -1,54 +1,49 @@
 {% extends 'mainapp/base.html' %}
+{% load humanize %}
 {% load static %}
 {% block content %}
     <div class="hero-white">
-        <div class="header clearfix">
-            <a href="{% url 'main' %}" class="logo"></a>
-            {% include 'mainapp/includes/inc_main_menu.html' %}
-
-            <a href="#" class="search"></a>
-            <a href="#" class="basket"></a>
-        </div>
+        {% block menu %}
+            <div class="header clearfix">
+                {% include 'mainapp/includes/inc_main_menu.html' %}
+            </div>
+        {% endblock %}
     </div>
-
     <div class="details">
         <div class="links clearfix">
             {% include 'mainapp/includes/inc_categories_menu.html' %}
         </div>
-
         <div class="details-products">
             <div class="details-slider">
                 <div class="slider-product">
-                    <img src="{% static 'img/slider1.jpg' %}" alt="">
+                    <img src="/media/{{ hot_product.image }}" alt="">
                 </div>
                 <div class="slider-control">
                     <div class="block">
-                        <a href="#"><img src="{% static 'img/controll.jpg' %}" alt="">
+                        <a href="#"><img src="/media/{{ hot_product.image }}" alt="">
                             <div class="text"></div>
                         </a>
                     </div>
                     <div class="block">
-                        <a href="#"><img src="{% static 'img/controll1.jpg' %}" alt="">
+                        <a href="#"><img src="/media/{{ hot_product.image }}" alt="">
                             <div class="text"></div>
                         </a>
                     </div>
                     <div class="block">
-                        <a href="#"><img src="{% static 'img/controll2.jpg' %}" alt="">
+                        <a href="#"><img src="/media/{{ hot_product.image }}" alt="">
                             <div class="text"></div>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="description">
-                <h3 class="big-bold">Отличный стул</h3>
+                <h3 class="big-bold">{{ hot_product.name }}</h3>
                 <h3 class="red">горячее предложение</h3>
-                <p class="price"> 2585.9 <span>руб</span></p>
-                <a href="#" class="red-button">заказать<i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                <p class="price"> {{ hot_product.price|floatformat:0|intcomma }} <span>₽</span></p>
+                <a href="{% url 'basket:add' hot_product.pk %}" class="red-button">
+                    заказать<i class="fa fa-chevron-right" aria-hidden="true"></i></a>
                 <div class="description-text">
-                    <p>Расположитесь комфортно.</p>
-                    <p>Отличное качество материалов позволит вам это.</p>
-                    <p>Различные цвета</p>
-                    <p>высочайший уровень эргономики и прочность.</p>
+                    <p>{{ hot_product.description }}</p>
                 </div>
             </div>
         </div>
@@ -60,11 +55,15 @@
             <div class="related-products clearfix">
                 {% for product in same_products %}
                     <div class="block">
-                        <a href="#"><img src="/media/{{ product.image }}" alt="{{ product.name }}">
+                        <a href="{% url 'products:product' product.pk %}"><img src="/media/{{ product.image }}"
+                                                                               alt="{{ product.short_desc }}">
                             <div class="text">
                                 <img src="{% static 'img/icon-hover.png' %}" alt="{{ product.name }}">
+                                <h3>{{ product.category.name }}</h3>
                                 <h4>{{ product.name }}</h4>
-                                <p>{{ product.short_desc }}</p>
+                                <p>{{ product.description }}</p>
+                                <p>Цена: {{ product.price|floatformat:0|intcomma }} ₽</p>
+                                <p>На складе: {{ product.quantity }}</p>
                             </div>
                         </a>
                     </div>
