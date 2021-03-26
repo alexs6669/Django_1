@@ -1,7 +1,7 @@
 {% extends 'adminapp/base.html' %}
 {% load static %}
 {% block content %}
-    <div class="users_list">
+    <div class="new_category_form">
         <form class="form-horizontal" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}

@@ -1,6 +1,6 @@
 from django import forms
 
-from authapp.forms import ShopUserEditForm, ShopUserRegisterForm
+from authapp.forms import ShopUserEditForm
 from authapp.models import ShopUser
 from mainapp.models import ProductCategory, Product
 

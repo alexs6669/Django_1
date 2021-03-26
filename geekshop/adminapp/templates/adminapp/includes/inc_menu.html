@@ -11,7 +11,7 @@
            href="{% url 'adminapp:category_read' %}">
             Категории
             {% if category %}
-                : {{ category.name }}
+                :<span>{{ category.name }}</span>
             {% endif %}
         </a>
     </li>

@@ -15,9 +15,18 @@
         </div>
         <div class="products_list">
             <div class="title clearfix">
-                <h2>
-                    Категория: "{{ category.name|title }}"
-                </h2>
+                <h2>Категория: "{{ category.name|title }}"</h2>
+                <div class="paginator">
+                    {% if products.has_previous %}
+                        <a href="{% url 'products:category' category.pk %}?p={{ products.previous_page_number }}">< назад</a>
+                    {% endif %}
+                    <span class="current">
+                        <b>страница {{ products.number }} из {{ products.paginator.num_pages }}</b>
+                    </span>
+                    {% if products.has_next %}
+                        <a href="{% url 'products:category' category.pk %}?p={{ products.next_page_number }}">вперед ></a>
+                    {% endif %}
+                </div>
             </div>
             <div class="category-products clearfix">
                 {% for product in products %}

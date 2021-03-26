@@ -97,11 +97,11 @@ html, body {
 }
 
 .products_list {
-    margin: 50px;
+    margin: 4px;
 }
 
 .products_list .new_product {
-    margin-left: 150px;
+    margin-left: 425px;
 }
 
 .products_list button {
@@ -109,7 +109,6 @@ html, body {
     border-radius: 5px;
     height: 30px;
     margin: 5px auto;
-    min-width: 135px;
     padding: 0 15px;
 }
 
@@ -272,7 +271,7 @@ html, body {
 }
 
 .users_list {
-    margin-left: 150px;
+    margin-left: 35px;
 }
 
 .users_list a {
@@ -281,7 +280,7 @@ html, body {
 }
 
 .users_list .new_user {
-    margin-left: 190px;
+    margin-left: 150px;
 }
 
 .users_list button {
