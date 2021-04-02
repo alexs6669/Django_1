@@ -1,233 +1,114 @@
-from django.contrib.auth.decorators import user_passes_test
-from django.http import HttpResponseRedirect
+import json
+import os
+import random
+
+from django.conf import settings
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse, reverse_lazy
-from django.utils.decorators import method_decorator
-from django.views.generic import ListView, CreateView, DeleteView, UpdateView, DetailView
 
-from adminapp.forms import ShopUserAdminEditForm, ProductEditForm, ProductCategoryEditForm
-from authapp.forms import ShopUserRegisterForm
-from authapp.models import ShopUser
-from mainapp.models import ProductCategory, Product
+from basketapp.models import Basket
+from mainapp.models import Product, ProductCategory
 
 
-class UserListView(ListView):
-    model = ShopUser
-    template_name = 'adminapp/users.html'
-
-    @method_decorator(user_passes_test(lambda u: u.is_superuser))
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
+def get_basket(user):
+    if user.is_authenticated:
+        return Basket.objects.filter(user=user)
+    return []
 
 
-class UserCreateView(CreateView):
-    model = ShopUser
-    template_name = 'adminapp/user_update.html'
-    success_url = reverse_lazy('adminapp:user_read')
-    form_class = ShopUserRegisterForm
-
-    @method_decorator(user_passes_test(lambda u: u.is_superuser))
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
+def get_hot_product():
+    products_list = Product.objects.all()
+    return random.sample(list(products_list), 1)[0]
 
 
-class UserUpdateView(UpdateView):
-    model = ShopUser
-    template_name = 'adminapp/user_update.html'
-    success_url = reverse_lazy('adminapp:user_read')
-    form_class = ShopUserAdminEditForm
-
-    @method_decorator(user_passes_test(lambda u: u.is_superuser))
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
+def get_same_products(hot_product):
+    same_products = Product.objects.filter(category=hot_product.category).exclude(pk=hot_product.pk)[:3]
+    return same_products
 
 
-class UserDeleteView(DeleteView):
-    model = ShopUser
-    template_name = 'adminapp/user_delete.html'
-    success_url = reverse_lazy('adminapp:user_read')
+def main(request):
+    title = 'главная'
 
-    @method_decorator(user_passes_test(lambda u: u.is_superuser))
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        self.object.is_active = False
-        self.object.save()
-        return HttpResponseRedirect(self.success_url)
-
-
-class ProductCategoriesListView(ListView):
-    model = ProductCategory
-    template_name = 'adminapp/categories.html'
-
-    @method_decorator(user_passes_test(lambda u: u.is_superuser))
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
-
-
-class ProductCategoryCreateView(CreateView):
-    model = ProductCategory
-    template_name = 'adminapp/category_update.html'
-    success_url = reverse_lazy('adminapp:category_read')
-    form_class = ProductCategoryEditForm  # рендерит кастомную модель из forms.py
-
-    # fields = '__all__' рендерит все поля из стандартной формы
-
-    @method_decorator(user_passes_test(lambda u: u.is_superuser))
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
-
-
-class ProductCategoryUpdateView(UpdateView):
-    model = ProductCategory
-    template_name = 'adminapp/category_update.html'
-    success_url = reverse_lazy('adminapp:category_read')
-    form_class = ProductCategoryEditForm
-
-    @method_decorator(user_passes_test(lambda u: u.is_superuser))
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
-
-
-class ProductCategoryDeleteView(DeleteView):
-    model = ProductCategory
-    template_name = 'adminapp/category_delete.html'
-    success_url = reverse_lazy('adminapp:category_read')
-
-    @method_decorator(user_passes_test(lambda u: u.is_superuser))
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        self.object.is_active = False
-        self.object.save()
-        return HttpResponseRedirect(self.success_url)
-
-
-@user_passes_test(lambda u: u.is_superuser)
-def products(request, pk):
-    category_item = get_object_or_404(ProductCategory, pk=pk)
-    products_list = Product.objects.filter(category=category_item).order_by('-is_active')
-    content = {
-        'objects': products_list,
-        'category': category_item
-    }
-
-    return render(request, 'adminapp/products.html', content)
-
-
-@user_passes_test(lambda u: u.is_superuser)
-def product_create(request, pk):
-    category_item = get_object_or_404(ProductCategory, pk=pk)
-    if request.method == 'POST':
-        product_form = ProductEditForm(request.POST, request.FILES)
-        if product_form.is_valid():
-            product_form.save()
-            return HttpResponseRedirect(reverse('admin:products', args=[pk]))
-    else:
-        product_form = ProductEditForm()
+    products = Product.objects.all()[4:7]
 
     content = {
-        'form': product_form,
-        'category': category_item
+        'title': title,
+        'products': products,
+        'basket': get_basket(request.user)
     }
 
-    return render(request, 'adminapp/product_update.html', content)
+    return render(request, 'mainapp/index.html', content)
 
 
-class ProductDetailView(DetailView):
-    model = Product
-    template_name = 'adminapp/product_read.html'
+def products(request, pk=None):
+    title = 'продукты'
+    links_menu = ProductCategory.objects.all()
+    page = request.GET.get('p', 1)
 
-    @method_decorator(user_passes_test(lambda u: u.is_superuser))
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
+    if pk is not None:
+        if pk == 0:
+            products_list = Product.objects.all().order_by('price')
+            category_item = {'name': 'все', 'pk': 0}
+        else:
+            category_item = get_object_or_404(ProductCategory, pk=pk)
+            products_list = Product.objects.filter(category__pk=pk).order_by('price')
 
+        paginator = Paginator(products_list, 3)
 
-@user_passes_test(lambda u: u.is_superuser)
-def product_update(request, pk):
-    product_item = get_object_or_404(Product, pk=pk)
-    if request.method == 'POST':
-        update_form = ProductEditForm(request.POST, request.FILES, instance=product_item)
-        if update_form.is_valid():
-            update_form.save()
-            return HttpResponseRedirect(reverse('admin:products', args=[product_item.category_id]))
-    else:
-        update_form = ProductEditForm(instance=product_item)
+        try:
+            products_paginator = paginator.page(page)
+        except PageNotAnInteger:
+            products_paginator = paginator.page(1)
+        except EmptyPage:
+            products_paginator = paginator.page(paginator.num_pages)
+
+        content = {
+            'title': title,
+            'links_menu': links_menu,
+            'category': category_item,
+            'products': products_paginator,
+            'basket': get_basket(request.user)
+        }
+
+        return render(request, 'mainapp/products_list.html', content)
+
+    hot_product = get_hot_product()
+    same_products = get_same_products(hot_product)
 
     content = {
-        'form': update_form,
-        'category': product_item.category
+        'title': title,
+        'links_menu': links_menu,
+        'same_products': same_products,
+        'hot_product': hot_product,
+        'basket': get_basket(request.user)
     }
 
-    return render(request, 'adminapp/product_update.html', content)
+    return render(request, 'mainapp/products.html', content)
 
 
-class ProductDeleteView(DeleteView):
-    model = Product
-    template_name = 'adminapp/product_delete.html'
-
-    def get_success_url(self):
-        category_pk = self.get_object().category.pk
-        return reverse_lazy('adminapp:products', args=[category_pk])
-
-    @method_decorator(user_passes_test(lambda u: u.is_superuser))
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        self.object.is_active = False
-        self.object.save()
-        return HttpResponseRedirect(self.get_success_url())
+def product(request, pk):
+    content = {
+        'title': 'продукт',
+        'product': get_object_or_404(Product, pk=pk),
+        'links_menu': ProductCategory.objects.all(),
+        'basket': get_basket(request.user)
+    }
+    return render(request, 'mainapp/product.html', content)
 
 
-'''
-class ProductsListView(ListView):
-    model = Product
-    template_name = 'adminapp/products.html'
+def contact(request):
+    title = 'о нас'
 
-    @method_decorator(user_passes_test(lambda u: u.is_superuser))
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
+    locations = []
+    with open(os.path.join(settings.BASE_DIR, 'mainapp/json/contacts.json'), encoding='utf-8') as file:
+        locations = json.load(file)
 
+    content = {
+        'title': title,
+        'locations': locations,
+        'basket': get_basket(request.user)
+    }
 
-class ProductCreateView(CreateView):
-    model = Product
-    template_name = 'adminapp/product_update.html'
-    success_url = reverse_lazy('adminapp:product_read')
-    form_class = ProductEditForm
+    return render(request, 'mainapp/contact.html', content)
 
-    @method_decorator(user_passes_test(lambda u: u.is_superuser))
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
-
-class ProductUpdateView(UpdateView):
-    model = Product
-    template_name = 'adminapp/product_update.html'
-    success_url = reverse_lazy('adminapp:product_read')
-    form_class = ProductEditForm
-
-    @method_decorator(user_passes_test(lambda u: u.is_superuser))
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
-
-
-class ProductDeleteView(DeleteView):
-    model = Product
-    template_name = 'adminapp/product_delete.html'
-    success_url = reverse_lazy('adminapp:product_read')
-
-    @method_decorator(user_passes_test(lambda u: u.is_superuser))
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        self.object.is_active = False
-        self.object.save()
-        return HttpResponseRedirect(self.success_url)
-'''
+# Create your views here.
