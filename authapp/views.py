@@ -6,7 +6,6 @@ from django.shortcuts import render
 from django.urls import reverse
 
 from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm
-from authapp.models import ShopUser
 
 
 def login(request):
