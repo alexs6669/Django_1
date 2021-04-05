@@ -1,0 +1,48 @@
+{% extends 'mainapp/base.html' %}
+{% load humanize %}
+{% load static %}
+{% block content %}
+    <div class="slider">
+        {% block menu %}
+            <div class="header clearfix">
+                {% include 'mainapp/includes/inc_main_menu.html' %}
+            </div>
+        {% endblock %}
+        <div class="text-slider">
+            <h3 class="green">тенденции</h3>
+            <h3 class="big">удобные стулья</h3>
+            <p>Новый уровень комфорта. Отличные характеристики.</p>
+            <a href="{% url 'mainapp:category' 0 %}" class="button-order">заказать <img
+                    src="{% static 'img/arrow.png' %}" alt="arrow"></a>
+        </div>
+        <div class="navi">
+            <a href="#"></a><a href="#"></a><a href="#"></a>
+        </div>
+    </div>
+    <div class="featured">
+        <div class="featured-menu">
+            <a class="active" href="#">Популярные</a><a href="#">Новинки</a>
+        </div>
+        <a class="explore" href="#">показать все <img src="{% static 'img/arrow.png' %}" alt="arrow"></a>
+        <div class="clearfix">
+        </div>
+        <div class="tab-content">
+            {% for product in products %}
+                <div class="block">
+                    <a href="{% url 'products:product' product.pk %}">
+                        <img src="/media/{{ product.image }}" alt="{{ product.name }}">
+                        <div class="text">
+                            <img src="{% static 'img/icon-hover.png' %}" alt="{{ product.name }}">
+                            <h3>{{ product.name|title }}</h3>
+                            <h4>Цена: {{ product.price|floatformat:0|intcomma }} ₽</h4>
+                            <p>{{ product.short_desc }}</p>
+                            <p> Остаток на складе: {{ product.quantity }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="clr"></div>
+{% endblock %}
+
