@@ -129,4 +129,5 @@ dmypy.json
 .pyre/
 
 # files
-.json
+auth_keys.json
+secret_key.json
