@@ -23,11 +23,11 @@ import mainapp.views as mainapp
 urlpatterns = [
     path('', mainapp.main, name='main'),
     path('auth/', include('authapp.urls', namespace='auth')),
-    path('basket/', include('basketapp.urls', namespace='basket')),
     path('products/', include('mainapp.urls', namespace='products')),
     path('contact/', mainapp.contact, name='contact'),
     path('basket/', include('basketapp.urls', namespace='basket')),
-    path('admin/', include('adminapp.urls', namespace='admin'))
+    path('admin/', include('adminapp.urls', namespace='admin')),
+    path('', include('social_django.urls', namespace='social'))
 
     # path('admin/', admin.site.urls),
 ]
