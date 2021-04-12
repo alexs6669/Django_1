@@ -3,13 +3,19 @@
     <form class="form-horizontal" action="{% url 'auth:login' %}" method="post">
         {% csrf_token %}
         {% if next %}
-        <input type="hidden" name="next" value="{{ next }}">
+            <input type="hidden" name="next" value="{{ next }}">
         {% endif %}
         {{ login_form.as_p }}
         <br>
-        <input type="submit" value="{{ 'войти'|title }}" class="form-control" />
+        <input type="submit" value="{{ 'войти'|title }}" class="form-control"/>
     </form>
-    <button class="btn btn-link form-control">
+    <button class="btn btn-link form-control reg">
         <a href="{% url 'auth:register' %}">{{ 'регистрация'|title }}</a>
+    </button>
+    <button class="btn btn-link form-control google">
+        <a href="{% url 'social:begin' 'google-oauth2' %}?next=/">{{ 'Google' }}</a>
+    </button>
+    <button class="btn btn-link form-control vk">
+        <a href="{% url 'social:begin' 'vk-oauth2' %}?next=/">{{ 'VK' }}</a>
     </button>
 {% endblock %}
