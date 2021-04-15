@@ -38,6 +38,11 @@
                 <i>{{ basket_items.0.total_cost }} руб.</i></b>
         </div>
     {% endif %}
+    <div>
+        <button class="button">
+            <a href="{% url 'ordersapp:order_create' %}">Создать заказ</a>
+        </button>
+    </div>
     <button class="button">
         <a href="{% url 'main' %}">На главную</a>
     </button>
