@@ -1,6 +1,5 @@
 # pip freeze > requirements.txt
 
-
 asgiref==3.3.4
 backcall==0.2.0
 certifi==2020.12.5
