@@ -42,8 +42,39 @@ window.onload = function () {
 
     $('.order_form select').change(function () {
         const target = event.target;
-        console.log(target);
+        orderItemNum = parseInt(target.name.replace('order_items-', '').replace('-product', ''));
+        const orderItemProductPk = target.options[target.selectedIndex].value;
+        if (orderItemProductPk) {
+            $.ajax({
+                url: "/order/product/" + orderItemProductPk + "/price/", success: function (data) {
+                    if (data.price) {
+                        priceArr[orderItemNum] = parseFloat(data.price);
+                        if (isNaN(quantityArr[orderItemNum])) {
+                            quantityArr[orderItemNum] = 0;
+                        }
+                        const priceHtml = '<span>' + data.price.toString().replace('.', ',') + '</span> руб';
+                        const currentTr = $('.order_form table').find('tr:eq(' + (orderItemNum + 1) + ')');
+                        currentTr.find('td:eq(2)').html(priceHtml);
+                        if (isNaN(currentTr.find('input[type="number"]').val())) {
+                            currentTr.find('input[type="number"]').val(0);
+                        }
+                        orderSummaryRecalc();
+                    }
+                },
+            });
+        }
     });
+
+    function orderSummaryRecalc() {
+        orderTotalQuantity = 0;
+        orderTotalCost = 0;
+        for (let i = 0; i < TOTAL_FORMS; i++) {
+            orderTotalQuantity += quantityArr[i];
+            orderTotalCost += quantityArr[i] * priceArr[i];
+        }
+        $('.order_total_quantity').html(orderTotalQuantity.toString());
+        $('.order_total_cost').html(Number(orderTotalCost.toFixed(2)).toString());
+    }
 
     function orderSummaryUpdate(orderItemPrice, deltaQuantity) {
         deltaCost = orderItemPrice * deltaQuantity;
@@ -57,7 +88,10 @@ window.onload = function () {
         const targetName = row[0].querySelector('input[type="number"]').name;
         orderItemNum = parseInt(targetName.replace('order_items-', '').replace('-quantity', ''));
         deltaQuantity = -quantityArr[orderItemNum];
-        orderSummaryUpdate(priceArr[orderItemNum], deltaQuantity);
+        quantityArr[orderItemNum] = 0;
+        if (isNaN(priceArr[orderItemNum]) && !isNaN(deltaQuantity)) {
+            orderSummaryUpdate(priceArr[orderItemNum], deltaQuantity);
+        }
     }
 
     $('.formset_row').formset({
