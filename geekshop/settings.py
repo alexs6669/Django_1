@@ -23,7 +23,7 @@ load_dotenv(BASE_DIR / '.env')
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = '^y2@ob2df(x)jjs6kp0%t#(da@w5sn6=o_495b%_joj#5!3@2-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
@@ -143,7 +143,7 @@ BASE_URL = 'http://localhost:8000'
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 25
 EMAIL_HOST_USER = 'django@gb.local'
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_PASSWORD = 'geekshop'
 EMAIL_USE_SSL = False
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = 'tmp/email_messages/'
@@ -170,11 +170,11 @@ AUTHENTICATION_BACKENDS = (
 
 LOGIN_ERROR_URL = '/'
 
-SOCIAL_AUTH_VK_OAUTH2_KEY = os.getenv('SOCIAL_AUTH_VK_OAUTH2_KEY')
-SOCIAL_AUTH_VK_OAUTH2_SECRET = os.getenv('SOCIAL_AUTH_VK_OAUTH2_SECRET')
+SOCIAL_AUTH_VK_OAUTH2_KEY = '7815209'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'uyRkgGaIvYih0Uo19hNG'
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '520173638077-rj753qc14904cmflehl615ojsd89cmil.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'iwTXYzg52zbqCjF69H4Fxz8U'
 
 # Setting default scope (чтобы вытянуть email из VK)
 SOCIAL_AUTH_VK_OAUTH2_IGNORE_DEFAULT_SCOPE = True
