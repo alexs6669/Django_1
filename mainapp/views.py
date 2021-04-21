@@ -6,7 +6,6 @@ from django.conf import settings
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, get_object_or_404
 
-
 from mainapp.models import Product, ProductCategory
 
 
@@ -22,7 +21,7 @@ def get_same_products(hot_product):
 
 def main(request):
     title = 'главная'
-    products = Product.objects.all()[4:7]
+    products = Product.objects.all().select_related('category')[4:7]
 
     content = {
         'title': title,
