@@ -137,9 +137,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 AUTH_USER_MODEL = 'authapp.ShopUser'
 LOGIN_URL = '/auth/login/'
+BASE_URL = 'http://5.63.154.156:80/'  # http://localhost:8000/
 
 # Отправка сообщения для авторизации пользователя
-# BASE_URL = 'http://localhost:8000'
 # EMAIL_HOST = 'localhost'
 # EMAIL_PORT = 25
 # EMAIL_HOST_USER = 'django@gb.local'
