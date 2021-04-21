@@ -10,7 +10,6 @@ from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditF
 from authapp.models import ShopUser
 
 
-@csrf_exempt
 def login(request):
     title = 'вход'
     login_form = ShopUserLoginForm(data=request.POST or None)
