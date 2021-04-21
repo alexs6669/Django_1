@@ -21,7 +21,7 @@ def get_same_products(hot_product):
 
 def main(request):
     title = 'главная'
-    products = Product.objects.all().select_related('category')[4:7]
+    products = Product.objects.all().select_related()[4:7]
 
     content = {
         'title': title,
@@ -42,7 +42,7 @@ def products(request, pk=None):
             category_item = {'name': 'все', 'pk': 0}
         else:
             category_item = get_object_or_404(ProductCategory, pk=pk)
-            products_list = Product.objects.filter(category__pk=pk).order_by('price')
+            products_list = Product.objects.filter(category__pk=pk).order_by('price').select_related()
 
         paginator = Paginator(products_list, 3)
 
