@@ -129,18 +129,20 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# Отправка сообщения для авторизации пользователя
 AUTH_USER_MODEL = 'authapp.ShopUser'
 LOGIN_URL = '/auth/login/'
-BASE_URL = 'http://localhost:8000'
 
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 25
-EMAIL_HOST_USER = 'django@gb.local'
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-EMAIL_USE_SSL = False
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = 'tmp/email_messages/'
+# Отправка сообщения для авторизации пользователя
+# BASE_URL = 'http://localhost:8000'
+# EMAIL_HOST = 'localhost'
+# EMAIL_PORT = 25
+# EMAIL_HOST_USER = 'django@gb.local'
+# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+# EMAIL_USE_SSL = False
+
+# Логирование сообщений в файл вместо отправки
+# EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+# EMAIL_FILE_PATH = 'tmp/email_messages/'
 
 # Python
 # py -m smtpd -n -c DebuggingServer localhost:25
@@ -148,11 +150,11 @@ EMAIL_FILE_PATH = 'tmp/email_messages/'
 # EMAIL_HOST_PASSWORD = None
 
 # Настройки для яндекса
-# EMAIL_HOST = 'smtp.yandex.net'
-# EMAIL_PORT = 465
-# EMAIL_HOST_USER = 'адрес@yandex.ru'
-# EMAIL_PASSWORD = 'пароль'
-# EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = os.getenv('YANDEX_MAIL')
+EMAIL_PASSWORD = os.getenv('YANDEX_PASS')
+EMAIL_USE_SSL = True
 
 
 # Backends for user authentication
