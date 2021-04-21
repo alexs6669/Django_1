@@ -42,7 +42,7 @@ def products(request, pk=None):
             category_item = {'name': 'все', 'pk': 0}
         else:
             category_item = get_object_or_404(ProductCategory, pk=pk)
-            products_list = Product.objects.filter(category__pk=pk).order_by('price').select_related()
+            products_list = Product.objects.filter(category__pk=pk).order_by('price')
 
         paginator = Paginator(products_list, 3)
 
