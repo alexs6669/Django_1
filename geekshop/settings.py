@@ -155,6 +155,7 @@ EMAIL_PORT = '465'
 EMAIL_HOST_USER = os.getenv('YANDEX_MAIL')
 EMAIL_HOST_PASSWORD = os.getenv('YANDEX_PASS')
 EMAIL_USE_SSL = True
+EMAIL_USE_TLS = False
 
 # Backends for user authentication
 AUTHENTICATION_BACKENDS = (
