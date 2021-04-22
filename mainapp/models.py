@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractUser
 class ProductCategory(models.Model):
     name = models.CharField(verbose_name='имя', max_length=64, unique=True)
     description = models.TextField(verbose_name='описание', blank=True)
-    is_active = models.BooleanField(verbose_name='активность', default=True)
+    is_active = models.BooleanField(db_index=True, verbose_name='активность', default=True)
 
     def __str__(self):
         return self.name
@@ -19,7 +19,7 @@ class Product(models.Model):
     description = models.TextField(verbose_name='описание продукта', blank=True)
     price = models.DecimalField(verbose_name='цена продукта', max_digits=8, decimal_places=2, default=0)
     quantity = models.PositiveIntegerField(verbose_name='количество на складе', default=0)
-    is_active = models.BooleanField(verbose_name='активность', default=True)
+    is_active = models.BooleanField(db_index=True, verbose_name='активность', default=True)
 
     def __str__(self):
         return f'{self.name} ({self.category.name})'
