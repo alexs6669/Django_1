@@ -13,7 +13,7 @@ from basketapp.models import Basket
 
 @login_required
 def basket(request):
-    basket_items = Basket.objects.filter(user=request.user).order_by('product__category')
+    basket_items = Basket.objects.filter(user=request.user).order_by('product__category').select_related()
     content = {
         'title': 'корзина',
         'basket_items': basket_items
