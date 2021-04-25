@@ -1,8 +1,4 @@
-http://5.63.154.156/
-http://5.63.154.156/products/
-http://5.63.154.156/category/1/
 http://5.63.154.156/basket/
-http://5.63.154.156/order/
-http://5.63.154.156/order/update/4/
+
 
 
