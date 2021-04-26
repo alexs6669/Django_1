@@ -1,4 +1,8 @@
 http://5.63.154.156/products/
+http://5.63.154.156/category/1/
+http://5.63.154.156/category/2/
+http://5.63.154.156/category/3/
+http://5.63.154.156/category/4/
 
 
 
