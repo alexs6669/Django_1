@@ -107,7 +107,7 @@ def main(request):
     return render(request, 'mainapp/index.html', content)
 
 
-@cache_page(120)
+@cache_page(3600)
 def products(request, pk=None):
     title = 'продукты'
     # links_menu = ProductCategory.objects.all()
