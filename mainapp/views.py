@@ -7,6 +7,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, get_object_or_404
 from django.core.cache import cache
 from mainapp.models import Product, ProductCategory
+from django.views.decorators.cache import cache_page
 
 
 def get_links_menu():
@@ -106,6 +107,7 @@ def main(request):
     return render(request, 'mainapp/index.html', content)
 
 
+@cache_page(120)
 def products(request, pk=None):
     title = 'продукты'
     # links_menu = ProductCategory.objects.all()

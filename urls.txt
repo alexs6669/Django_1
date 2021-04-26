@@ -1,7 +1,4 @@
-http://5.63.154.156/order/update/4/
-http://5.63.154.156/order/update/5/
-http://5.63.154.156/order/update/6/
-http://5.63.154.156/order/update/7/
+http://5.63.154.156/products/
 
 
 
