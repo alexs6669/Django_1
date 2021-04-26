@@ -125,7 +125,7 @@ def products(request, pk=None):
             category_item = get_category(pk)
             products_list = get_products_in_category_ordered_by_price(pk)
 
-        paginator = Paginator(products_list, 3)
+        paginator = Paginator(products_list, 2)
 
         try:
             products_paginator = paginator.page(page)
