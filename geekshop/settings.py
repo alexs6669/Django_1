@@ -168,6 +168,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 AUTH_USER_MODEL = 'authapp.ShopUser'
 LOGIN_URL = '/auth/login/'
 BASE_URL = 'http://5.63.154.156:80/'  # http://localhost:8000/
+DOMAIN_NAME = 'http://5.63.154.156:80/'  # http://localhost:8000/
 
 # Отправка сообщения для авторизации пользователя
 # EMAIL_HOST = 'localhost'
