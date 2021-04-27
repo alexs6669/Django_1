@@ -96,8 +96,8 @@ def get_same_products(hot_product):
 
 def main(request):
     title = 'главная'
-    products = Product.objects.all().select_related()[4:7]
-    # products = get_products()[4:7]
+    # products = Product.objects.all().select_related()[4:7]
+    products = get_products()[4:7]
 
     content = {
         'title': title,
@@ -109,8 +109,8 @@ def main(request):
 
 def products(request, pk=None):
     title = 'продукты'
-    links_menu = ProductCategory.objects.all()
-    # links_menu = get_links_menu()
+    # links_menu = ProductCategory.objects.all()
+    links_menu = get_links_menu()
     page = request.GET.get('p', 1)
 
     if pk is not None:
