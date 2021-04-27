@@ -1,5 +1,4 @@
 from django.contrib.auth.decorators import user_passes_test
-from django.db.models import F
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
@@ -110,20 +109,6 @@ class ProductCategoryUpdateView(UpdateView):
     template_name = 'adminapp/category_update.html'
     success_url = reverse_lazy('adminapp:category_read')
     form_class = ProductCategoryEditForm
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'категории/редактирование'
-        return context
-
-    def form_valid(self, form):
-        if 'discount' in form.cleaned_data:
-            discount = form.cleaned_data['discount']
-            if discount:
-                self.object.product_set.update(price=F('price') * (1 - discount / 100))
-                db_profile_by_type(self.__class__, 'UPDATE', connection.queries)
-
-        return super().form_valid(form)
 
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
     def dispatch(self, *args, **kwargs):
