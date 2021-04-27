@@ -96,8 +96,8 @@ def get_same_products(hot_product):
 
 def main(request):
     title = 'главная'
-    # products = Product.objects.all().select_related()[4:7]
-    products = get_products()[4:7]
+    products = Product.objects.all().select_related()[4:7]
+    # products = get_products()[4:7]
 
     content = {
         'title': title,
@@ -109,20 +109,20 @@ def main(request):
 
 def products(request, pk=None):
     title = 'продукты'
-    # links_menu = ProductCategory.objects.all()
-    links_menu = get_links_menu()
+    links_menu = ProductCategory.objects.all()
+    # links_menu = get_links_menu()
     page = request.GET.get('p', 1)
 
     if pk is not None:
         if pk == 0:
-            # products_list = Product.objects.all().order_by('price')
-            products_list = get_products_ordered_by_price()
+            products_list = Product.objects.all().order_by('price')
+            # products_list = get_products_ordered_by_price()
             category_item = {'name': 'все', 'pk': 0}
         else:
-            # category_item = get_object_or_404(ProductCategory, pk=pk)
-            # products_list = Product.objects.filter(category__pk=pk).order_by('price')
-            category_item = get_category(pk)
-            products_list = get_products_in_category_ordered_by_price(pk)
+            category_item = get_object_or_404(ProductCategory, pk=pk)
+            products_list = Product.objects.filter(category__pk=pk).order_by('price')
+            # category_item = get_category(pk)
+            # products_list = get_products_in_category_ordered_by_price(pk)
 
         paginator = Paginator(products_list, 2)
 
