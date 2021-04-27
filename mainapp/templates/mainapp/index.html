@@ -35,7 +35,6 @@
                             <img src="{% static 'img/icon-hover.png' %}" alt="{{ product.name }}">
                             <h3>{{ product.name|title }}</h3>
                             <h4>Цена: {{ product.price|floatformat:0|intcomma }} ₽</h4>
-                            <p>{{ product.short_desc }}</p>
                             <p> Остаток на складе: {{ product.quantity }}</p>
                         </div>
                     </a>
