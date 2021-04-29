@@ -92,7 +92,7 @@ class TestUserManagement(TestCase):
         self.assertEqual(response.status_code, 302)
 
         new_user = ShopUser.objects.get(username=new_user_data['username'])
-        activation_url = f"{settings.DOMAIN_NAME}/auth/verify/{new_user.activation_key}/"
+        activation_url = f"{settings.DOMAIN_NAME}/auth/verify/{new_user.activation_key}"
         response = self.client.get(activation_url)
         self.assertEqual(response.status_code, 200)
 
