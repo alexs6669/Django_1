@@ -92,10 +92,9 @@ class TestUserManagement(TestCase):
         self.assertEqual(response.status_code, 302)
 
         new_user = ShopUser.objects.get(username=new_user_data['username'])
-        activation_url = f"{settings.DOMAIN_NAME}/auth/verify/{new_user_data['email']}/{new_user.activation_key}/"
-
-        # response = self.client.get(activation_url)
-        # self.assertEqual(response.status_code, 200)
+        activation_url = f"{settings.DOMAIN_NAME}/auth/verify/{new_user.activation_key}/"
+        response = self.client.get(activation_url)
+        self.assertEqual(response.status_code, 200)
 
         # данные нового пользователя
         self.client.login(username=new_user_data['username'], password=new_user_data['password1'])
@@ -103,7 +102,7 @@ class TestUserManagement(TestCase):
         # логинимся
         response = self.client.get('/auth/login/')
         self.assertEqual(response.status_code, 200)
-        # self.assertFalse(response.context['user'].is_anonymous)
+        self.assertFalse(response.context['user'].is_anonymous)
 
         # проверяем главную страницу
         response = self.client.get('/')
