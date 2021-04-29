@@ -3,10 +3,6 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.template.loader import render_to_string
 from django.urls import reverse
-from django.utils.decorators import method_decorator
-from django.views.generic import UpdateView
-from social_core.utils import user_is_active
-
 from mainapp.models import Product
 from basketapp.models import Basket
 
